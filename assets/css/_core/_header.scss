@@ -5,10 +5,6 @@ header {
   @include transition(box-shadow 0.3s ease);
   @extend .print-d-none;
 
-  [data-theme='dark'] & {
-    background-color: $header-background-color-dark;
-  }
-
   &:hover {
     @include box-shadow(0 0 1.5rem 0 rgba(0, 0, 0, 0.1));
 

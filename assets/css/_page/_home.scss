@@ -71,6 +71,13 @@
   }
 }
 
+.post-list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
+  overflow: hidden;
+}
+
 .home.posts {
   .home-profile {
     padding: 2rem 0;
@@ -81,25 +88,23 @@
   }
 
   .summary {
-    padding-top: 1rem;
-    padding-bottom: 0.8rem;
-    color: $global-font-color;
-    border-bottom: 1px dashed $global-border-color;
+    background: #e29d601f;
+    height: 360px; /* 元素高度为宽度的两倍，减去列间距的一半 */
+    margin: 20px 10px 0px 10px;
+    padding: 0px; /* 设置内边距 */
+    border-radius: 5%;
+    box-sizing: border-box; /* 内边距和边框计入元素的总宽度和高度 */
 
     &:first-of-type {
       padding-top: 0;
     }
 
-    [data-theme='dark'] & {
-      color: $global-font-color-dark;
-      border-bottom: 1px dashed $global-border-color-dark;
-    }
-
     .featured-image-preview {
       width: 100%;
-      padding: 30% 0 0;
+      height: 50%;
+      padding: 0% 0 0;
       position: relative;
-      margin: 0.6rem auto;
+      margin: 0;
       @include transition(transform 0.4s ease);
 
       img {
@@ -108,6 +113,7 @@
         height: 100%;
         left: 0;
         top: 0;
+        border-radius: 5% 5% 0% 0%;
         @include object-fit(cover);
       }
 
@@ -118,23 +124,29 @@
 
     .single-title {
       font-size: 1.25rem;
-      line-height: 140%;
-      margin: 0.4rem 0;
+      line-height: 100%;
+      margin: 0 5%;
+
+      .a {
+        white-space: nowrap; /* 防止文本换行 */
+        overflow: hidden; /* 隐藏超出部分 */
+        text-overflow: ellipsis; /* 显示省略号 */
+        color: #ffcc11;
+      }
+    }
+
+    .post-meta{
+      margin: 0 5%;
     }
 
     .content {
       @include box(vertical);
       -webkit-line-clamp: 3;
-      margin-top: 0.3rem;
+      margin: 0 5%;
       width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
-      @include overflow-wrap(break-word);
-      color: $global-font-secondary-color;
-
-      [data-theme='dark'] & {
-        color: $global-font-secondary-color-dark;
-      }
+      // @include overflow-wrap(break-word);
 
       h2,
       h3,
@@ -158,14 +170,6 @@
 
       @include link(false, true);
 
-      b,
-      strong {
-        color: $global-font-secondary-color;
-
-        [data-theme='dark'] & {
-          color: $global-font-secondary-color-dark;
-        }
-      }
     }
 
     .post-footer {
