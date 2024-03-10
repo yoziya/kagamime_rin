@@ -1,0 +1,25 @@
+{{- $footerConfig := .Site.Params.footer -}}
+
+{{- if ne $footerConfig.enable false -}}
+  <footer class="footer">
+    <div class="footer-container">
+      {{- /* Custom Content */ -}}
+      {{- partial (.Scratch.Get "customFilePath").footer . -}}
+
+      {{- /* 不蒜子 */ -}}
+      {{- if eq .Site.Params.ibruce.enable true -}}
+        {{- $loading := dict "Class" "fa-solid fa-spinner fa-spin fa-fw" | partial "plugin/icon.html" -}}
+        <div class="footer-line visitor{{ with $footerConfig.order.visitor }} order-{{ . }}{{ end }}">
+          <span id="busuanzi_container_site_uv" title='{{ T "footer.siteUV" }}'>
+            {{- dict "Class" "fa-regular fa-user fa-fw" | partial "plugin/icon.html" -}}&nbsp;<span id="busuanzi_value_site_uv">{{ $loading }}</span>{{- /* NO_SPACING */ -}}
+          </span>
+          {{- /* NO_SPACING */ -}}
+          <span id="busuanzi_container_site_pv" class="footer-divider" title='{{ T "footer.sitePV" }}'>
+            {{- dict "Class" "fa-regular fa-eye fa-fw" | partial "plugin/icon.html" -}}&nbsp;<span id="busuanzi_value_site_pv">{{ $loading }}</span>{{- /* NO_SPACING */ -}}
+          </span>
+        </div>
+      {{- end -}}
+
+    </div>
+  </footer>
+{{- end -}}

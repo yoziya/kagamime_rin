@@ -1,0 +1,26 @@
+{
+  "name": "kagamime_rin",
+  "version": "0.0.0",
+  "private": true,
+  "description": "kagamime_rin theme",
+  "keywords": [
+    "hugo",
+    "theme",
+    "kagamime_rin"
+  ],
+  "homepage": "https://github.com/yoziya/kagamime_rin#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoziya/kagamime_rin.git"
+  },
+  "license": "Apache License 2.0",
+  "author": "yoziya (https://yoziya.com)",
+  "scripts": {
+    "build": "hugo --source=demo --themesDir ../.. --theme $PWD --gc --minify  --logLevel info",
+    "server": "hugo server --source=demo --themesDir ../.. --theme $PWD -D --disableFastRender --navigateToChanged --ignoreCache --bind 0.0.0.0",
+    "server:production": "npm run server -- -e production",
+    "server:docs": "hugo server --source=../fixit-docs -D --disableFastRender --navigateToChanged --ignoreCache --bind 0.0.0.0",
+    "version": "sed -i '' \"s/v$npm_package_version-RC/v$npm_package_version/g\" layouts/partials/init/index.html && git add .",
+    "postversion": "git push && git push --tags"
+  }
+}
