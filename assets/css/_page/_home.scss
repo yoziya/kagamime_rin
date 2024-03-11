@@ -78,6 +78,15 @@
   overflow: hidden;
 }
 
+@media (max-width: 600px) {
+  .post-list-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0px;
+    overflow: hidden;
+  }
+}
+
 .home.posts {
   .home-profile {
     padding: 2rem 0;
