@@ -73,9 +73,18 @@
 
 .post-list-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 0px;
   overflow: hidden;
+}
+
+@media (max-width: 1080px) {
+  .post-list-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0px;
+    overflow: hidden;
+  }
 }
 
 @media (max-width: 600px) {
@@ -110,7 +119,7 @@
 
     .featured-image-preview {
       width: 100%;
-      height: 50%;
+      height: 75%;
       padding: 0% 0 0;
       position: relative;
       margin: 0;
@@ -132,7 +141,7 @@
     }
 
     .single-title {
-      font-size: 1.25rem;
+      font-size: 1rem;
       line-height: 100%;
       margin: 0 5%;
 
@@ -146,6 +155,10 @@
 
     .post-meta{
       margin: 0 5%;
+
+      .post-categoriy{
+        float: right;
+      }
     }
 
     .content {
@@ -182,23 +195,21 @@
     }
 
     .post-footer {
-      margin-top: 0.4rem;
+      margin: 0 5%;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.875rem;
+      white-space: nowrap;
+      padding: 0;
 
       @include link(false, false);
 
-      .post-tags {
-        padding: 0;
+      .post-tag {
+        background-color: #ffffff7f;
+        border-radius: 10px 10px 10px 10px;
+        margin-right: 10px;
+        font-size: 0.875rem;
+        padding: 0 10px 0 10px;
 
         @include link(true, true);
-        
-        .post-tag:not(:last-child)::after {
-          content: ',';
-          margin-right: 0.25rem;
-        }
       }
     }
   }
